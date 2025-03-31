@@ -7,11 +7,11 @@ import ParallaxBackground from "@/components/animation/ParallaxBackground";
 export const metadata: Metadata = {
   title: "Contact | Om Prakash Das | Senior Software Engineer",
   description:
-    "Get in touch with me for work inquiries, collaborations, or questions.",
+    "Reach out for project inquiries, freelance opportunities, collaborations, or just to connect and talk tech, design, or development.",
   openGraph: {
     title: "Contact | Om Prakash Das | Senior Software Engineer",
     description:
-      "Get in touch with me for work inquiries, collaborations, or questions.",
+      "Reach out for project inquiries, freelance opportunities, collaborations, or just to connect and talk tech, design, or development.",
   },
 };
 

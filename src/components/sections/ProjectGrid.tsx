@@ -15,7 +15,7 @@ const projects = [
     description: "An utility to decode and encode JWT tokens with ease.",
     category: "Web Development",
     tags: ["Next.js", "React", "TypeScript", "Tailwind"],
-    link: "https://jwt-decoder-gamma.vercel.app",
+    link: "https://jwt.ompdas.com",
     github: "https://github.com/Om1938/jwt-decoder",
     featured: true,
     color: "from-blue-500 to-purple-600",
@@ -28,7 +28,7 @@ const projects = [
       "An utility to calculate finance related calculations with ease.",
     category: "Utility",
     tags: ["React"],
-    link: "https://fin-calcs.vercel.app",
+    link: "https://fincalc.ompdas.com",
     github: "https://github.com/Om1938/fin-calcs",
     featured: true,
     color: "from-green-500 to-teal-600",
@@ -197,7 +197,13 @@ export default function ProjectGrid() {
                   variant="outline"
                   className="border-white text-white"
                 >
-                  <Link href={project.link}>View Project</Link>
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={project.link}
+                  >
+                    View Project
+                  </Link>
                 </Button>
                 {project.github && (
                   <Button

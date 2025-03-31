@@ -16,7 +16,7 @@ const featuredProjects = [
     description: "An utility to decode and encode JWT tokens with ease.",
     category: "Web Development",
     tags: ["Next.js", "React", "TypeScript", "Tailwind"],
-    link: "https://jwt-decoder-gamma.vercel.app",
+    link: "https://jwt.ompdas.com",
     github: "https://github.com/Om1938/jwt-decoder",
     featured: true,
     color: "from-blue-500 to-purple-600",
@@ -29,7 +29,7 @@ const featuredProjects = [
       "An utility to calculate finance related calculations with ease.",
     category: "Utility",
     tags: ["React Native", "Node.js", "MongoDB", "Firebase"],
-    link: "https://fin-calcs.vercel.app",
+    link: "https://fincalc.ompdas.com",
     github: "https://github.com/Om1938/fin-calcs",
     featured: true,
     color: "from-green-500 to-teal-600",
@@ -174,11 +174,7 @@ export default function ProjectsSection() {
                       variant="outline"
                       className="border-white text-white"
                     >
-                      <Link
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <Link href={project.github} target="_blank">
                         GitHub
                       </Link>
                     </Button>
