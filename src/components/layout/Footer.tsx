@@ -133,7 +133,7 @@ export default function Footer() {
               ))}
             </div>
             <p className="text-sm text-muted-foreground">
-              © {currentYear} Your Name. All rights reserved.
+              © {currentYear} Om Prakash Das. All rights reserved.
             </p>
           </div>
         </div>
