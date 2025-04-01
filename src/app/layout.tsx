@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.ompdas.com"),
   title: "Om Prakash Das | Professional Portfolio | Senior Software Engineer",
   description:
-    "A comprehensive professional portfolio highlighting development expertise, key projects, technical skills, and hands-on experience across modern web and mobile technologies.",
+    "Full-stack developer portfolio showcasing expertise in React, Flutter, and Electron. Explore web and mobile projects built with modern technologies.",
   keywords: [
     "portfolio",
     "developer",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Professional Portfolio | Senior Software Engineer",
     description:
-      "A comprehensive professional portfolio highlighting development expertise, key projects, technical skills, and hands-on experience across modern web and mobile technologies.",
+      "Full-stack developer portfolio showcasing expertise in React, Flutter, and Electron. Explore web and mobile projects built with modern technologies.",
     url: "https://www.ompdas.com",
     siteName: "Om Prakash Das | Professional Portfolio",
     images: [
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Om Prakash Das | Professional Portfolio | Senior Software Engineer",
     description:
-      "A comprehensive professional portfolio highlighting development expertise, key projects, technical skills, and hands-on experience across modern web and mobile technologies.",
+      "Full-stack developer portfolio showcasing expertise in React, Flutter, and Electron. Explore web and mobile projects built with modern technologies.",
     images: ["/portfolio.png"],
     creator: "@omkletu",
   },
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     ],
   },
   verification: {
-    google: "verification_code", // Replace with your actual verification code
+    google: "nF5o1GO8d1FUu0GV-QSckAysjHRWCba9xzAHPIJj7yA",
   },
 };
 

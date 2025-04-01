@@ -10,7 +10,7 @@ import ParallaxBackground from "@/components/animation/ParallaxBackground";
 export const metadata: Metadata = {
   title: "Home | Om Prakash Das | Senior Software Engineer",
   description:
-    "A comprehensive professional portfolio highlighting development expertise, key projects, technical skills, and hands-on experience across modern web and mobile technologies.",
+    "Full-stack developer portfolio showcasing expertise in React, Flutter, and Electron. Explore web and mobile projects built with modern technologies.",
 };
 
 export default function Home() {
