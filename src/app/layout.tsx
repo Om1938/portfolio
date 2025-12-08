@@ -1,17 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { ParallaxProvider } from "@/components/animation/ParallaxProvider";
 
-const geistSans = Geist({
+const geistSans = localFont({
+  src: "../../assets/Inter_18pt-SemiBold.ttf",
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  display: "swap",
+  weight: "600",
 });
 
-const geistMono = Geist_Mono({
+const geistMono = localFont({
+  src: "../../assets/Inter_18pt-SemiBold.ttf",
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
+  weight: "600",
 });
 
 export const viewport: Viewport = {

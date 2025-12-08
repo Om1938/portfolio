@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
+import type { Easing, Variants } from "framer-motion";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -89,15 +90,15 @@ export default function ContactForm() {
     }
   };
 
-  const inputVariants = {
+  const inputVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
-    visible: (i: number) => ({
+    visible: (i = 0) => ({
       y: 0,
       opacity: 1,
       transition: {
         delay: i * 0.1,
         duration: 0.4,
-        ease: "easeOut",
+        ease: "easeOut" as Easing,
       },
     }),
   };
