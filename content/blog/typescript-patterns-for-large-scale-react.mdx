@@ -1,0 +1,78 @@
+---
+title: "TypeScript Patterns for Large-Scale React Apps"
+summary: "Practical TypeScript patterns I've used to keep codebases maintainable at scale — from discriminated unions to branded types and exhaustive checks."
+date: "2024-01-15"
+readTime: "12 min read"
+tag: "TypeScript"
+slug: "typescript-patterns-for-large-scale-react"
+published: true
+---
+
+After years of working on large React codebases at Carestack and Hashedin, I've settled on a handful of TypeScript patterns that genuinely improve maintainability. These aren't academic exercises — they solve real problems.
+
+## Discriminated Unions for State
+
+Instead of booleans and nullable fields that can get into impossible states, use discriminated unions:
+
+```ts
+type RequestState<T> =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "success"; data: T }
+  | { status: "error"; error: string };
+```
+
+Now your component can't accidentally access `data` when `status === "error"`. TypeScript catches it at compile time.
+
+## Branded Types
+
+Branded (or opaque) types prevent mixing up values of the same primitive type:
+
+```ts
+type UserId = string & { readonly _brand: "UserId" };
+type PostId = string & { readonly _brand: "PostId" };
+
+function getUser(id: UserId) { ... }
+
+const postId = "abc" as PostId;
+getUser(postId); // TS error — correct!
+```
+
+Use a helper function to create branded values and keep the casting in one place.
+
+## Exhaustive Checks
+
+When you switch on a union, ensure every case is handled:
+
+```ts
+function assertNever(x: never): never {
+  throw new Error(`Unexpected value: ${x}`);
+}
+
+switch (state.status) {
+  case "idle": return <Idle />;
+  case "loading": return <Spinner />;
+  case "success": return <Data data={state.data} />;
+  case "error": return <Error message={state.error} />;
+  default: return assertNever(state);
+}
+```
+
+If you add a new variant to `RequestState` and forget to handle it, TypeScript errors immediately.
+
+## Satisfies Operator
+
+The `satisfies` operator (TS 4.9+) lets you validate a value against a type while keeping its inferred literal type:
+
+```ts
+const config = {
+  theme: "dark",
+  lang: "en",
+} satisfies Record<string, string>;
+
+// config.theme is "dark", not just string
+```
+
+## Conclusion
+
+These patterns pay for themselves quickly. The key is consistency — pick a set and apply them uniformly across the codebase. TypeScript's value compounds when you use it deliberately.

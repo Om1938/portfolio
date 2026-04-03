@@ -1,0 +1,86 @@
+---
+title: "Mastering Framer Motion: From Basics to Parallax"
+summary: "Everything you need to know about Framer Motion — scroll-linked animations, parallax effects, orchestration, and performance-conscious animation patterns."
+date: "2023-11-10"
+readTime: "10 min read"
+tag: "Animation"
+slug: "mastering-framer-motion"
+published: true
+---
+
+Framer Motion is the animation library I reach for on every React project. It's expressive, performant, and covers everything from simple fade-ins to scroll-linked parallax. Here's how I use it.
+
+## The Mental Model
+
+Everything in Framer Motion revolves around the `motion` component and its props:
+
+- `initial` — the starting state
+- `animate` — the target state
+- `exit` — the state when the component unmounts (requires `AnimatePresence`)
+- `transition` — how to get from one state to another
+- `variants` — named states you can reference by string
+
+## Variants and Orchestration
+
+Variants let you define animation states declaratively and orchestrate children:
+
+```tsx
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08 }
+  }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 }
+};
+
+<motion.ul variants={container} initial="hidden" animate="visible">
+  {items.map(i => (
+    <motion.li key={i} variants={item}>{i}</motion.li>
+  ))}
+</motion.ul>
+```
+
+The `staggerChildren` on the container automatically staggers each child's animation. Children inherit the parent's `initial` and `animate` props automatically.
+
+## Scroll-Triggered Animations
+
+Use `whileInView` for elements that animate when they enter the viewport:
+
+```tsx
+<motion.div
+  initial={{ opacity: 0, y: 32 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-60px" }}
+  transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+>
+```
+
+`viewport.once: true` means the animation only plays once. `margin: "-60px"` triggers 60px before the element enters the viewport, so it's already animating when the user sees it.
+
+## Parallax with useScroll + useTransform
+
+For scroll-linked parallax, `useScroll` gives you a `scrollY` motion value, and `useTransform` maps it to any other value:
+
+```tsx
+const { scrollY } = useScroll();
+const y = useTransform(scrollY, [0, 500], [0, -150]);
+
+<motion.div style={{ y }}>Parallax content</motion.div>
+```
+
+The key insight: use multiple layers with different transform amounts to create depth. Elements that move more appear farther away; elements that move less appear closer.
+
+## Performance
+
+Framer Motion animates `transform` and `opacity` by default — these are GPU-composited and don't trigger layout or paint. Avoid animating `width`, `height`, `top`, `left` as they cause reflows.
+
+Use `will-change: transform` sparingly (Framer handles this automatically for animated motion values).
+
+For heavy pages, use `layout` prop only where you need it — it's expensive because it measures DOM elements.
+
+Animation is a detail that communicates quality. Used well, it guides attention and feels natural. Used poorly, it distracts. Less is almost always more.

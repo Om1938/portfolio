@@ -1,0 +1,60 @@
+---
+title: "Building Accessible React Components from Scratch"
+summary: "A deep dive into building WCAG 2.1 compliant UI components — covering focus management, ARIA patterns, and keyboard navigation without external libraries."
+date: "2024-03-01"
+readTime: "8 min read"
+tag: "Accessibility"
+slug: "building-accessible-react-components"
+published: true
+---
+
+Accessibility is not an afterthought — it's a fundamental part of building great software. In this post, I'll walk through how I approach building WCAG 2.1 compliant React components without relying on external libraries.
+
+## Why Roll Your Own?
+
+Libraries like Radix UI and Headless UI are excellent. But understanding what they do under the hood makes you a better engineer. Building from scratch reveals the mechanics of:
+
+- Focus trapping in modals
+- Roving tabindex for composite widgets
+- ARIA live regions for dynamic content
+- Keyboard navigation patterns
+
+## Focus Management
+
+The most common accessibility failure I see in React apps is broken focus management. When a modal opens, focus must move inside it. When it closes, focus must return to the trigger.
+
+```tsx
+function Modal({ open, onClose, triggerRef, children }) {
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    if (open) {
+      modalRef.current?.focus();
+    } else {
+      triggerRef.current?.focus();
+    }
+  }, [open]);
+
+  return open ? (
+    <div ref={modalRef} tabIndex={-1} role="dialog" aria-modal="true">
+      {children}
+    </div>
+  ) : null;
+}
+```
+
+## ARIA Patterns
+
+The [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) is your bible here. Every widget pattern — tabs, listboxes, comboboxes — has a spec that defines exactly which ARIA attributes and keyboard interactions are required.
+
+## Keyboard Navigation
+
+For composite widgets like tab lists and toolbars, use the **roving tabindex** pattern: only one item in the group is in the tab sequence at a time (`tabIndex={0}`), the rest are `tabIndex={-1}`. Arrow keys move focus within the group.
+
+This keeps keyboard navigation predictable and prevents users from having to tab through dozens of items.
+
+## Testing
+
+Always test with actual screen readers — VoiceOver on macOS, NVDA on Windows. Automated tools like axe catch maybe 30% of issues. The rest require manual testing.
+
+Accessibility is a practice, not a checklist. Ship it incrementally.

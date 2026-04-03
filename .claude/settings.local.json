@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Read(//Users/omprakashdas/**)",
-      "Bash(python3 .claude/skills/ui-ux-pro-max/scripts/search.py \"portfolio nextjs\" --stack nextjs)"
+      "Bash(python3 .claude/skills/ui-ux-pro-max/scripts/search.py \"portfolio nextjs\" --stack nextjs)",
+      "Bash(export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\")",
+      "Bash(npm run:*)",
+      "mcp__Claude_Preview__preview_start",
+      "WebFetch(domain:www.ompdas.com)",
+      "Bash(PATH=\"/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin\" /opt/homebrew/bin/node node_modules/.bin/next build)",
+      "Bash(gh repo:*)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }

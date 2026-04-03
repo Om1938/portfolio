@@ -1,26 +1,208 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* highlight.js — GitHub Dark theme (inlined to avoid pnpm hoisting issues on Vercel) */
+pre code.hljs { display: block; overflow-x: auto; padding: 1em }
+code.hljs { padding: 3px 5px }
+.hljs { color: #c9d1d9; background: #0d1117 }
+.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_ { color: #ff7b72 }
+.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_ { color: #d2a8ff }
+.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-variable,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id { color: #79c0ff }
+.hljs-regexp,.hljs-string,.hljs-meta .hljs-string { color: #a5d6ff }
+.hljs-built_in,.hljs-symbol { color: #ffa657 }
+.hljs-comment,.hljs-code,.hljs-formula { color: #8b949e }
+.hljs-name,.hljs-quote,.hljs-selector-tag,.hljs-selector-pseudo { color: #7ee787 }
+.hljs-subst { color: #c9d1d9 }
+.hljs-section { color: #1f6feb; font-weight: bold }
+.hljs-bullet { color: #f2cc60 }
+.hljs-emphasis { color: #c9d1d9; font-style: italic }
+.hljs-strong { color: #c9d1d9; font-weight: bold }
+.hljs-addition { color: #aff5b4; background-color: #033a16 }
+.hljs-deletion { color: #ffdcd7; background-color: #67060c }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg-base: var(--bg-base);
+  --color-bg-card: var(--bg-card);
+  --color-bg-card-hover: var(--bg-card-hover);
+  --color-border-subtle: var(--border-subtle);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-glow: var(--accent-glow);
+  --font-display: var(--font-display-var), "Helvetica Neue", sans-serif;
+  --font-body: var(--font-body-var), "Helvetica Neue", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Dark mode (default) ── */
+:root {
+  --bg-base: #0a0a0a;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.10);
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+  --accent-glow: #6366f1;
+  --nav-bg: rgba(10, 10, 10, 0.85);
+}
+
+/* ── Light mode ── */
+.light {
+  --bg-base: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 0.98);
+  --border-subtle: rgba(15, 23, 42, 0.10);
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #475569;
+  --accent-blue: #2563eb;
+  --accent-purple: #7c3aed;
+  --accent-glow: #4f46e5;
+  --nav-bg: rgba(248, 250, 252, 0.90);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100dvh;
+  font-family: var(--font-body-var), "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Gradient utilities ── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+}
+
+/* ── Dot grid background ── */
+.dot-grid {
+  background-image: radial-gradient(circle, var(--border-subtle) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Selection ── */
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: var(--text-primary);
+}
+
+/* ── Focus ring ── */
+:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Blog prose ── */
+.prose-blog h2 {
+  font-family: var(--font-display-var), sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+.prose-blog h3 {
+  font-family: var(--font-display-var), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+.prose-blog p { margin-bottom: 1.25rem; }
+.prose-blog ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.prose-blog ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.prose-blog li { margin-bottom: 0.4rem; }
+.prose-blog a {
+  color: var(--accent-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-blog strong { color: var(--text-primary); font-weight: 600; }
+.prose-blog code {
+  font-size: 0.82em;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+  color: var(--accent-blue);
+}
+.prose-blog pre {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+.prose-blog pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+.prose-blog blockquote {
+  border-left: 3px solid var(--accent-blue);
+  padding-left: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+/* ── TipTap editor — shares prose-blog styles, minimal overrides only ── */
+.tiptap-editor:focus { outline: none; }
+.tiptap-editor .ProseMirror { outline: none; }
+.tiptap-editor .ProseMirror-focused { outline: none; }
+/* Placeholder text */
+.tiptap-editor .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--text-muted);
+  pointer-events: none;
+  float: left;
+  height: 0;
 }
