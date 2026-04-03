@@ -38,12 +38,23 @@ export const experience: ExperienceItem[] = [
     description:
       "Leading frontend engineering for a comprehensive dental practice management platform. Driving architecture decisions for large-scale React applications and mentoring engineers.",
     bullets: [
-      "Architected reusable component library reducing feature development time by 40%",
-      "Led migration of legacy codebase to TypeScript improving team velocity and code safety",
-      "Collaborated closely with UX designers to deliver pixel-perfect, accessible interfaces",
-      "Mentored junior engineers through code reviews and pair programming sessions",
+      "Developed and launched multiple sales tools for production use, significantly enhancing operational efficiency and revenue generation",
+      "Led and mentored a team of 6 full-stack developers, fostering skill development and ensuring successful project execution",
+      "Built dynamic desktop applications using React and Electron, enhancing user experience and cross-platform functionality",
+      "Contributed to creating a new design system, improving consistency and brand alignment across platforms",
+      "Worked on an AI-based telecom application to monitor call quality and generate transcripts, improving customer satisfaction",
     ],
-    tech: ["React", "TypeScript", "Next.js", "GraphQL", "Tailwind CSS", "Electron", "React Native", "Figma", "AWS"],
+    tech: [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "GraphQL",
+      "Tailwind CSS",
+      "Electron",
+      "React Native",
+      "Figma",
+      "AWS",
+    ],
   },
   {
     company: "Hashedin by Deloitte",
@@ -51,28 +62,37 @@ export const experience: ExperienceItem[] = [
     period: "Feb 2022 – Nov 2022",
     current: false,
     description:
-      "Developed scalable web applications for enterprise clients across fintech and e-commerce domains, working in cross-functional agile teams.",
+      "Developed scalable web applications for enterprise clients in fintech, working in cross-functional agile teams with a Spring-based backend.",
     bullets: [
-      "Built and maintained React-based micro-frontend architecture for a major fintech platform",
-      "Optimized bundle size and Core Web Vitals scores improving performance by 35%",
-      "Implemented design system components adopted across 3 product teams",
+      "Specialized in front-end development using React and Apollo GraphQL integrated with a Spring-based backend",
+      "Played a key role in developing a report generation feature for 'CLEAR', an investigation software used for comprehensive background verification of entities",
     ],
-    tech: ["React", "JavaScript", "Node.js", "REST APIs"],
+    tech: ["React", "JavaScript", "Apollo GraphQL", "Spring Boot", "REST APIs"],
   },
   {
     company: "Infosys Limited",
     role: "Web Developer & Mentor",
-    period: "Dec 2018 – Feb 2022",
+    period: "Dec 2018 - Feb 2022",
     current: false,
     description:
-      "Developed web applications for global enterprise clients and mentored a cohort of 6 junior engineers through Infosys's internal training programs.",
+      "Developed web applications for global enterprise clients including Blackrock, and mentored engineers through Infosys's internal training programs.",
     bullets: [
-      "Delivered full-stack web features for clients across healthcare and retail verticals",
-      "Mentored 6 engineers as part of the Infosys Springboard program",
-      "Specialized in responsive UI development with a focus on cross-browser compatibility",
-      "Received 'Insta Award' for outstanding client delivery on a critical project",
+      "Worked on Teamworld (Blackrock Aladdin) — a stocks, portfolio, and client management system at enterprise scale",
+      "Built an attendance application now used by 15,000+ members across Infosys training centers",
+      "Automated build and CI processes to drive build/release failure resolution and reduce downtime",
+      "Eliminated downtime by implementing NoSQL database and caching strategies to optimize response rates",
+      "Mentored interns on project onboarding and ramp-up with .NET and Angular",
     ],
-    tech: ["HTML", "CSS", "JavaScript", "React", "Java", "Spring Boot"],
+    tech: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Java",
+      "Spring Boot",
+      ".NET",
+      "Angular",
+    ],
   },
 ];
 
@@ -119,6 +139,15 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Om1938/jwt-decoder",
     live: "https://jwt.ompdas.com/",
   },
+  // {
+  //   title: "Finance Calculators",
+  //   description:
+  //     "A handy collection of finance-related calculators — EMI, SIP, compound interest, and more — built to make everyday financial planning simple and accessible.",
+  //   category: "Frontend",
+  //   tech: ["React", "Node.js", "MongoDB", "Firebase"],
+  //   github: "https://github.com/Om1938/fin-calcs",
+  //   live: "https://fincalc.ompdas.com",
+  // },
   {
     title: "tw-masonry",
     description:
@@ -138,7 +167,6 @@ export const projects: ProjectItem[] = [
     live: null,
   },
 ];
-
 
 export const social = {
   github: "https://github.com/Om1938",

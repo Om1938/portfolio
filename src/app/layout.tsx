@@ -42,9 +42,16 @@ export const metadata: Metadata = {
     title: "Om Prakash Das | Senior Software Engineer",
     description:
       "Senior Software Engineer with 6+ years of experience. Solving problems using software.",
-    url: "https://ompdas.dev",
+    url: "https://ompdas.com",
     siteName: "Om Prakash Das",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Om Prakash Das Portfolio" }],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Om Prakash Das Portfolio",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
